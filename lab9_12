@@ -1,0 +1,42 @@
+#include <iostream>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s;
+    cin>>s;
+    
+    stack<int> st;
+    st.push(int(s[0])-48);
+    
+    for(int i=1; i<s.size(); i++){
+      if(st.top()==1 && int(s[i])-48==1){
+        st.pop();
+        continue;
+      } 
+      st.push(int(s[i])-48);
+    }
+  
+  
+    stack<int> tempS;
+    
+    while(!st.empty()){
+      tempS.push(st.top());
+      st.pop();
+    }
+    
+    st = tempS;
+    
+    while(!st.empty()){
+      cout<<st.top();
+      st.pop();
+    }
+    
+}
+
+//10110 
