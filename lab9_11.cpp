@@ -3,6 +3,7 @@
 #include <utility>
 #include <vector>
 #include <algorithm>
+#include <map>
 using namespace std;
 
 int comp(char a, char b){
@@ -14,27 +15,23 @@ int main()
     int days;
     cin>>days;
     
-    vector<pair<string, double>> v;
-    
+    map<string, double> m;
+
     int count=0;
     
     for(int i=0; i<days; i++){
       int n;
       cin>>n;
-      
       for(int j=0; j<n; j++){
         string city;
         double num;
         cin>>city>>num;
         count+=num;
-        pair<string, double> x = {city, num};
-        v.push_back(x);
+        m[city]+=num;
       }
     }
     
-    sort(v.begin(), v.end());
-    
-    for(auto i: v){
+    for(auto& i: m){
       cout<<i.first<<" "<<(i.second/count)*100<<"%"<<endl;
     }
 }
